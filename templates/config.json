@@ -1,0 +1,18 @@
+{
+  "params": {
+    "local_server": "true",
+     "no_of_posts": "3",
+    "gmail_user": "codesdk9@gmail.com",
+     "admin_user": "test@gmail.com",
+    "gmail_password": "hkoloecomijjjhcq",
+    "admin_password": "Password",
+    "local_uri": "mysql+pymysql://root:@localhost/dkcodes",
+    "remote_uri": "mysql+pymysql://root:@localhost/dkcodes",
+    "fb_url": "https://www.facebook.com/profile.php?id=100053393910241",
+    "tw_url": "https://x.com/kishans94565218",
+    "gt_url": "https://github.com/devkishansingh",
+    "blog_name": "Sehaj Dhun Gurmat Sangeet Academy",
+    "upload_location": "C:\\Users\\rajpu\\PycharmProjects\\SehajDhunGurmat\\static\\uploads"
+  }
+
+}

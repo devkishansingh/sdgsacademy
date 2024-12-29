@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+{% block body %}
+<!-- Page Header-->
+<header class="masthead" style="background-image: url('{{ url_for('static', filename='assets/img/sdclogo.png') }}')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <h2>ਸਭਨਾ ਰਾਗਾਂ ਵਿਚਿ ਸੋ ਭਲਾ ਭਾਈ ਜਿਤੁ ਵਸਿਆ ਮਨਿ ਆਇ ॥ ਰਾਗੁ ਨਾਦੁ ਸਭੁ ਸਚੁ ਹੈ ਕੀਮਤਿ ਕਹੀ ਨ ਜਾਇ ॥</h2>
+                    <span class="subheading">ਰਾਗੈ ਨਾਦੈ ਬਾਹਰਾ ਇਨੀ ਹੁਕਮੁ ਨ ਬੂਝਿਆ ਜਾਇ ॥ ਨਾਨਕ ਹੁਕਮੈ ਬੂਝੈ ਤਿਨਾ ਰਾਸਿ ਹੋਇ ਸਤਿਗੁਰ ਤੇ ਸੋਝੀ ਪਾਇ ॥ ਸਭੁ ਕਿਛੁ ਤਿਸ ਤੇ ਹੋਇਆ ਜਿਉ ਤਿਸੈ ਦੀ ਰਜਾਇ ॥੨੪॥{ਪੰਨਾ}1423</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content-->
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            <!-- Post preview-->
+            {% for post in posts %}
+            <li style="list-style-type: none; margin-left: 20px;">
+                <a href="/post/{{ post.slug }}">
+                    <div class="post-preview">
+                        <h2 class="post-title">{{ post.title }}</h2>
+                        <span class="subheading">{{ post.subHeading[0:100] }}...</span>
+                        <span class="meta" style="display: block; color: #555; font-size: 0.85em; margin-top: 5px;">
+                                Posted by:
+                                <a href="#" style="color: #007BFF;">{{ post.postedBy }}</a>
+                                on <span style="color: #666;">{{ post.postDate }}</span>
+                            </span><br>
+                    </div>
+                </a>
+            </li>
+            {% endfor %}
+
+            <!-- Divider-->
+            <hr class="my-4"/>
+
+            <!-- Navigation Links -->
+            <div class="d-flex justify-content-between mb-4">
+                {% if prev %}
+                <a class="btn btn-primary text-uppercase" href="{{ prev }}">⬅️ Previous</a>
+                {% else %}
+                <span></span>
+                {% endif %}
+
+                {% if next %}
+                <a class="btn btn-primary text-uppercase" href="{{ next }}">Next ➡️</a>
+                {% else %}
+                <span></span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

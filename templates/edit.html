@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+{% block body %}
+   <!-- Page Header-->
+<header class="masthead" style="background-image: url('{{ url_for('static', filename='assets/img/about-bg.jpg') }}');">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="page-heading text-center">
+                    <h1>Welcome To DK Codes</h1>
+                    <span class="subheading">Manage Your Posts and Save Them.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content-->
+
+
+    <main class="mb-4">
+    <div class="container px-4 px-lg-5">
+                <h2>Basic Actions</h2><br>
+                <div class="d-flex justify-content-start">
+                <!-- Add New Post button -->
+                <button class="btn btn-primary  me-2" onclick="location.href='/dashboard';">Go to DashBoard</button>
+
+                <!-- Logout button -->
+                <button class="btn btn-danger pe-2" onclick="location.href='/logout';">Logout</button>
+            </div>
+      <br>
+{#        <h2>Add a File</h2><br>#}
+        </div>
+</main>
+    <main class="mb-4">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <h2>Add/Edit Posts...</h2><br>
+
+                    <form action="/edit/{% if post %}{{ post.s_no }}{% else %}0{% endif %}" method="post">
+                        <!-- Title Input -->
+                        <div class="form-floating mb-3" style="position: relative;">
+                            <input type="text" name="title" class="form-control input-field" id="title" placeholder="Title"
+                                style="border-radius: 0.5rem; padding-left: 40px; padding-right: 40px; border: 1px solid #ced4da;"
+                                value="{% if post %}{{ post.title }}{% endif %}">
+                            <label for="title" style="padding-left: 50px;">Title</label>
+                            <i class="fas fa-times" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;" onclick="document.getElementById('title').value = '';"></i>
+                        </div>
+
+                        <!-- Sub Heading Input -->
+                        <div class="form-floating mb-3" style="position: relative;">
+                            <input type="text" class="form-control input-field" name="subHeading" id="subHeading" placeholder="Sub Heading"
+                                style="border-radius: 0.5rem; padding-left: 40px; padding-right: 40px; border: 1px solid #ced4da;"
+                                value="{% if post %}{{ post.subHeading }}{% endif %}">
+                            <label for="subHeading" style="padding-left: 50px;">Sub Heading</label>
+                            <i class="fas fa-times" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;" onclick="document.getElementById('subHeading').value = '';"></i>
+                        </div>
+
+                        <!-- Slug Input -->
+                        <div class="form-floating mb-3" style="position: relative;">
+                            <input type="text" class="form-control input-field" name="slug" id="slug" placeholder="Slug"
+                                style="border-radius: 0.5rem; padding-left: 40px; padding-right: 40px; border: 1px solid #ced4da;"
+                                value="{% if post %}{{ post.slug }}{% endif %}">
+                            <label for="slug" style="padding-left: 50px;">Slug</label>
+                            <i class="fas fa-times" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;" onclick="document.getElementById('slug').value = '';"></i>
+                        </div>
+
+                        <!-- Content Text Area -->
+                        <div class="form-floating mb-3" style="position: relative;">
+                            <textarea class="form-control input-field" name="content" id="content" placeholder="Content"
+                                style="border-radius: 0.5rem; padding-left: 40px; padding-right: 40px; border: 1px solid #ced4da; height: 150px;">{% if post %}{{ post.content }}{% endif %}</textarea>
+                            <label for="content" style="padding-left: 50px;">Content</label>
+                            <i class="fas fa-times" style="position: absolute; right: 10px; top: 10px; cursor: pointer;" onclick="document.getElementById('content').value = '';"></i>
+                        </div>
+
+                        <!-- Background Image Input -->
+                        <div class="form-floating mb-3" style="position: relative;">
+                            <input type="text" class="form-control input-field" name="bg_image" id="bg_image" placeholder="Image File"
+                                style="border-radius: 0.5rem; padding-left: 40px; padding-right: 40px; border: 1px solid #ced4da;"
+                                value="{% if post %}{{ post.bg_image }}{% endif %}">
+                            <label for="bg_image" style="padding-left: 50px;">Image File</label>
+                            <i class="fas fa-times" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;" onclick="document.getElementById('bg_image').value = '';"></i>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button class="btn btn-primary w-100 py-2" type="submit" style="border-radius: 0.5rem;">Submit</button>
+
+                        <!-- Footer Text -->
+                        <p class="mt-5 mb-3 text-body-secondary">&copy; {{ params['blog_name'] }} 2024–2025</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

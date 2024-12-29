@@ -1,0 +1,86 @@
+{%  extends "layout.html" %}
+{% block body %}
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('{{url_for('static',filename= 'assets/img/sdclogo2.png')}}">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="page-heading">
+                            <h2>Welcome To Sehaj Dhun Gurmat Sangeet Academy</h2>
+                            <span class="subheading">A Trust Under Baba Sucha Singh Sangeet Academy.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content-->
+<main class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <h2 style="font-size: 1.25rem; font-weight: normal;">Basic Actions</h2><br>
+        <div class="d-flex justify-content-start">
+            <!-- Add New Post button -->
+            <button class="btn btn-primary me-2" onclick="location.href='/edit/0';">Add a New Post</button>
+
+            <!-- Logout button -->
+            <button class="btn btn-danger pe-2" onclick="location.href='/logout';">Logout</button>
+        </div>
+        <br><hr>
+        <h2 style="font-size: 1.25rem; font-weight: normal;">Upload a File</h2><br>
+        <!-- Display flash messages -->
+         {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div class="alert alert-info" role="alert" style="font-size: 0.875rem;">
+            <ul>
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+{% endwith %}
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <form action="/uploader" method="post" enctype="multipart/form-data">
+            <input type="file" name="postFile" style="font-size: 0.875rem;">
+            <button class="btn btn-primary" type="submit" style="font-size: 0.875rem;">Submit</button>
+        </form>
+        <hr>
+    </div>
+</main>
+
+
+
+        <main class="mb-4">
+            <h2 class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <h2 class="col-md-10 col-lg-8 col-xl-7">
+                        <h2 >Update Your Posts...</h2><br><hr>
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Post Date</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for post in posts %}
+    <tr>
+      <th scope="row">{{ post.s_no }}</th>
+      <td>{{ post.title }}</td>
+      <td>{{ post.postDate }}</td>
+         <td><a href="/edit/{{ post.s_no }}"> <button class="btn btn-primary" >Edit</button> </a></td>
+          <td><a href="/delete/{{ post.s_no }}">
+              <button class="btn btn-primary">Delete</button></a> </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+                </div>
+
+               </h2> </div>
+            </div>
+        </main>
+{% endblock %}
